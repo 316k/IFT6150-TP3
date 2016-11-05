@@ -1,0 +1,55 @@
+Ondelettes vs. TF :
+
+Les ondelettes sont vues comme une amélioration p/r à la TF
+
+TF :
+
+Propriété de décalage :
+
+f(x)        <=TF=> F(nu)
+f(x - x_0)  <=TF=> F(nu) exp(-2pi*j*nu*x_0)
+
+=> On garde le même module peu importe le décalage de phase du signal
+
+Fourier -> une modification mineure à un coefficient a des grosses répercussions sur l'image
+
+On aimerait de quoi de plus local
+
+
+Ondelettes :
+
+Décompose en hautes fréquences orientées localement dans divers sens
+
+Illustration dans le dossiers articles : Haar_Basis.jpg
+
+http://www.iro.umontreal.ca/~mignotte/IFT6150/Articles/Haar_Basis.jpg
+
+
+Seuillage dur :
+
+ => Sparsité : un signal peut se reconstituer avec un nombre très limité de composantes fréquentielles
+
+On peut donc garder seulement certaines fréquences pour débruiter en mettant un seuil pour garder les fréquences.
+Si une fréquence est peu présente, le seuillage dur l'élimine.
+
+Seuillage doux = aut'chose
+
+
+
+Algo optimal : prendre Landweber seulement pendant les premières itérations, jusqu'à ce que ça se mette à descendre (~25 itérations => 2,30dB), puis rajouter l'étape de débruitage à chaque itération
+
+
+Plus de notes :
+
+h(-x, -y) == h(x, y) [la fonction est paire dans notre cas]
+**Si on avait eu une PSF qui n'était pas paire (ex.: hand-shaking), on aurait dû considérer ça
+
+
+Quelques résultats pour vérifier que tout marche :
+
+Ondelettes :
+sigma² = 900 => sigma = 30 => dégradation de +- 90
+  -> Problème de bruit essentiellement
+  Avec 5 niveaux de résolutions, on a un seuil de 47 => ISNR = 5.58
+
+

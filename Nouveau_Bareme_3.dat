@@ -1,0 +1,49 @@
+IFT6150 Automne 2016 TP3
+
+L'énoncé du TP3 ainsi que les programmes fournis se trouvent sur le
+site  du cours: http://www.iro.umontreal.ca/~mignotte/ift6150.html
+
+Le TP3 est à remettre à 16h30 le 18 Novembre, Pénalité de 10% par 24h de retard.
+
+Vous devez fournir les programmes suivants:
+
+     TpIFT6150-3-A.c
+     TpIFT6150-3-B.c
+     TpIFT6150-3-C.c
+
+qui doivent produire les images demandées dans l'énoncé du TP3.
+
+Barème pour le TP3 (Le maximum des points alloués est indiqué ci-dessous):
+
+Exécution et implémentation: (100 points)
+============================
+
+ - TpIFT6150-3-A : Algorithme de Landweber (30 points)
+
+ - TpIFT6150-3-B : Ondelettes (30 points)
+
+ - TpIFT6150-3-C : Algorithme de Figueiredo et Nowak (30 points)
+
+ - Style de programmation: (10 points)
+
+Pour le IFT6150-3-A, on doit pouvoir entrer la variance du bruit au
+clavier, la largeur du filtre ainsi que le nombre d'itérations. Le
+programme doit afficher  la valeur de l'ISNR à chaque itération de
+l'algorithme de Landweber.
+
+Pour le IFT6150-3-B, on doit pouvoir entrer la variance du bruit au
+clavier, le nombre de niveaux d'ondelettes à traiter ainsi que le
+seuil. A la fin, le programme doit afficher la valeur de l'ISNR.
+
+Pour le IFT6150-3-C, on doit pouvoir entrer la variance du bruit au
+clavier, la largeur du filtre ainsi que le nombre d'itérations de
+Landweber. Le programme doit afficher la valeur de l'ISNR pour chaque
+itération.
+
+Les programmes doivent compiler sous Linux.
+
+
+
+
+
+          
