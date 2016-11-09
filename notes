@@ -53,3 +53,10 @@ sigma² = 900 => sigma = 30 => dégradation de +- 90
   Avec 5 niveaux de résolutions, on a un seuil de 47 => ISNR = 5.58
 
 
+B) var 900, niveaux = 5, seuil 47
+
+C)
+Entrez la taille du filtre passe bas : 5
+Entrez la variance du bruit : 20
+Entrez le nombre d'itérations (LANDWEBER): 25
+ISNR devrait monter jusqu'à 3.2
