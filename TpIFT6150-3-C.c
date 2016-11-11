@@ -279,8 +279,9 @@ void landweber(float** f, float** f_i, // Image restaurée
  * Multiplication par une fonction porte de support [0, 255]
  */
 void mult_pi_fct(float** f, int length, int width) {
-    for(int i=0;i<length;i++)
-        for(int j=0;j<width;j++) {
+    int i,j;
+    for(i=0;i<length;i++)
+        for(j=0;j<width;j++) {
             f[i][j] = fmax(0, fmin(f[i][j], 255));
         }
 }
