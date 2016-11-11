@@ -135,7 +135,15 @@ int main(int argc,char** argv)
     SaveImagePgm(NAME_IMG_OUT5, f, length, width);
 
     /*Liberation memoire*/
-  
+    free_fmatrix_2d(image_r); /* image d'entree */
+    free_fmatrix_2d(image_i); /* image d'entree */
+    free_fmatrix_2d(g_r);  	  /* image degradee */
+    free_fmatrix_2d(g_i);
+    free_fmatrix_2d(f); 	  /* image restoree */
+    free_fmatrix_2d(f_i);
+    free_fmatrix_2d(filter_r);
+    free_fmatrix_2d(filter_i);
+    
     /*retour sans probleme*/ 
     printf("\n C'est fini ... \n\n\n");
     return 0; 	 

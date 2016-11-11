@@ -81,11 +81,15 @@ int main(int argc,char** argv){
                             difference_squared(image_orig, tmp, length, width));
 
     printf("ISNR : %lf\n", isnr);
-
     
  	/* sauvegarder les images */
     mult_pi_fct(tmp, length, width);
     SaveImagePgm(NAME_IMG_OUT2, tmp, length, width);
+
+    free_fmatrix_2d(image_orig);
+    free_fmatrix_2d(image);
+    free_fmatrix_2d(haar);
+    free_fmatrix_2d(tmp);
     
     /*retour sans probleme*/ 
     printf("\n C'est fini ... \n\n\n");

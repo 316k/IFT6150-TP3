@@ -33,11 +33,11 @@ void mult_pi_fct(float** f, int length, int width);
 
 int main(int argc,char** argv)
 {
-    int nb_iterations = 25;
+    int nb_iterations;
     int i,j,k,l;
     int length,width;
-    float var = 20;
-    int size_filter = 5;
+    float var;
+    int size_filter;
     int nbLevels = 3;
 
     float** image_r; /* image d'entree */
@@ -54,13 +54,13 @@ int main(int argc,char** argv)
 
     
     printf("Entrez la taille du filtre passe bas : ");
-    //scanf("%d",&size_filter);	
+    scanf("%d",&size_filter);	
 
     printf("Entrez la variance du bruit : ");
-    //scanf("%f",&var);
+    scanf("%f",&var);
  
     printf("Entrez le nombre d'itérations (LANDWEBER): ");
-    //scanf("%d",&nb_iterations);
+    scanf("%d",&nb_iterations);
 
     /* ouvrir l'image d'entree */
     /* lire l'image d'entree */	
@@ -141,44 +141,14 @@ int main(int argc,char** argv)
     int size_image_moyenne = length / powf(2, nbLevels);
 
     while(continuer) {
-
-        isnr = 10 * log10(difference_squared(image_r, g_r, length, width) /
-                          difference_squared(image_r, f,   length, width));
-
-        printf("%02d - ISNR : %lf\n", k, isnr);
-        
-        char filename[50];
-        sprintf(filename, "iter-%02d", k);
-        SaveImagePgm(filename, f, length, width);
         
         for(i=0;i<length;i++)
             for(j=0;j<width;j++) {
                 f_prev[i][j] = f[i][j];
             }
 
-        // FIXME
         landweber(f, f_i, g_r, g_i, filter_r, filter_i,
                   image_r, 1, 1, length, width);
-
-        if(k == 5) {
-            mult_pi_fct(f, length, width);
-            mult_pi_fct(f_i, length, width);
-            mult_pi_fct(g_r, length, width);
-            mult_pi_fct(g_i, length, width);
-            mult_pi_fct(filter_r, length, width);
-            mult_pi_fct(filter_i, length, width);
-            mult_pi_fct(image_r, length, width);
-
-            SaveImagePgm("1f", f, length, width);
-            SaveImagePgm("1f_i", f_i, length, width);
-            SaveImagePgm("1g_r", g_r, length, width);
-            SaveImagePgm("1g_i", g_i, length, width);
-            SaveImagePgm("1filter_r", filter_r, length, width);
-            SaveImagePgm("1filter_i", filter_i, length, width);
-            SaveImagePgm("1image_r", image_r, length, width);
-
-            return EXIT_SUCCESS;
-        }
         
         haar2D_complete(f, haar, nbLevels, length, width);
 
@@ -207,8 +177,6 @@ int main(int argc,char** argv)
 
         continuer = (a / b) > 0.00001;
 
-        
-        printf("Condition d'arrêt : %f / %f > 10⁻⁵ = %d\n", a, b, continuer);
         k++;
     }
 
@@ -217,7 +185,18 @@ int main(int argc,char** argv)
     SaveImagePgm(NAME_IMG_OUT3, f, length, width);
     
     /* Liberation memoire pour les matrices */
-    
+    free_fmatrix_2d(image_r); /* image d'entree */
+    free_fmatrix_2d(image_i); /* image d'entree */
+    free_fmatrix_2d(g_r);  	 /* image degradee */
+    free_fmatrix_2d(g_i);
+    free_fmatrix_2d(f); 		 /* image restoree */
+    free_fmatrix_2d(f_prev);
+    free_fmatrix_2d(f_i);
+    free_fmatrix_2d(filter_r);
+    free_fmatrix_2d(filter_i);
+    free_fmatrix_2d(haar);
+    free_fmatrix_2d(zeros);
+
     /*retour sans probleme*/ 
     printf("\n C'est fini ... \n\n\n");
     return 0; 	 
